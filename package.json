@@ -1,0 +1,34 @@
+{
+  "name": "node-xero",
+  "version": "0.1.0",
+  "description": "Node.js wrapper for Xero",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --compilers js:babel/register",
+    "browserify": "browserify index.js -t babelify --outfile build/xero/index.js",
+    "babelify": "babel --stage 0 --plugins object-assign -d lib/ src/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/moimikey/node-xero.git"
+  },
+  "keywords": [
+    "xero",
+    "accounting"
+  ],
+  "author": "Michael Scott Hertzberg <mshertzberg@gmail.com> (http://michael.hertzberg.co/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/moimikey/node-xero/issues"
+  },
+  "homepage": "https://github.com/moimikey/node-xero",
+  "devDependencies": {
+    "babel": "^5.5.8",
+    "babel-core": "^5.5.8",
+    "babel-plugin-object-assign": "^1.1.0",
+    "babelify": "^6.1.2",
+    "browserify": "^10.2.3",
+    "chai": "^2.3.0",
+    "mocha": "^2.2.5"
+  }
+}
