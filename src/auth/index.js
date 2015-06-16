@@ -1,5 +1,4 @@
-import Config from './_config';
-import API    from '../api';
+import * as API from '../api';
 
 class Auth {
   constructor(options) {
@@ -14,7 +13,8 @@ class Auth {
 export default Auth;
 
 /*
-var Xero = require('./');
-var xero = new Xero({ type: 'something', privateKey: 'something' });
-console.log(xero);
+var xero = require('./');
+var Xero = new xero({ type: 'something', privateKey: 'something' });
+var createAccount = new Xero.API.Accounting.Accounts;
+console.log(createAccount);
 */

@@ -1,11 +1,9 @@
-import Accounting from './accounting';
+import { Accounting } from './accounting';
 import Files      from './files';
 import Payroll    from './payroll';
 
-const API = {
+export {
   Accounting,
   Files,
   Payroll
 };
-
-export default API;

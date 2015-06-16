@@ -1,5 +1,5 @@
-const Accounting = {
-  a: 'Accounting'
-}
+import Accounts from './accounts';
 
-export default Accounting;
+export const Accounting = {
+  Accounts
+};
