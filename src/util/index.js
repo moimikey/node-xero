@@ -1,9 +1,3 @@
-import { inject } from './decorators'
-
-const Util = {
-  decorators: {
-    inject
-  }
+export default function arrayContains(haystack, needle) {
+  return haystack.indexOf(needle) > -1
 }
-
-export default Util;

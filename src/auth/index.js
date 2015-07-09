@@ -1,20 +1,29 @@
-import * as API from '../api';
+import {
+  Accounting,
+  Files,
+  Payroll
+} from '../api';
 
-class Auth {
+export class Auth {
   constructor(options) {
     Object.assign(this, options);
   }
 
   connect() {
-    return API;
+    return {
+      Accounting,
+      Files,
+      Payroll
+    }
   }
 }
 
-export default Auth;
-
 /*
-var xero = require('./');
-var Xero = new xero({ type: 'something', privateKey: 'something' });
+var _Xero = require('./');
+var Xero = new _Xero({ type: 'something', privateKey: 'something' });
+Xero
+Xero.Accounting.getAccounts()
+
 var createAccount = new Xero.API.Accounting.Accounts;
 console.log(createAccount);
 */

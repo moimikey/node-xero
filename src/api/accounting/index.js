@@ -1,5 +1,7 @@
 import Accounts from './accounts';
 
-export const Accounting = {
+const Accounting = {
   Accounts
 };
+
+export default Accounting;

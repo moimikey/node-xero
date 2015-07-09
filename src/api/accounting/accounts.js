@@ -1,13 +1,13 @@
-import { connector } from '../connector';
+// import connector from '../connector';
 
-@connector({
-  public:  true,
-  private: true,
-  partner: false
-})
+// @connector({
+//   public: true
+// })
 class Accounts {
-  constructor() {
-    Object.assign(this, Accounts.connector);
+  constructor(stuff) {
+    console.log('shit', stuff)
+    // this[Symbol('oauth')] = this.constructor.oauth
+    // console.log(this)
   }
 
   create() {
@@ -15,7 +15,15 @@ class Accounts {
   }
 
   read() {
-    console.log('read');
+    // this.oauth.get(
+    //   'https://api.twitter.com/1.1/trends/place.json?id=23424977',
+    //   'your user token for this app',
+    //   'your user secret for this app',
+    //   function (err, data, res) {
+    //     if (err) console.error(err);
+    //     done();      
+    //   }
+    // );
   }
 
   update() {
@@ -27,4 +35,4 @@ class Accounts {
   }
 }
 
-export default Accounts;
+export default new Accounts;

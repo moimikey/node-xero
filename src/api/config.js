@@ -7,7 +7,8 @@ export default {
     accessTokenUrl:     'https://api.xero.com/oauth/AccessToken',
     encryptionType:     'HMAC-SHA1',
     requiresConnection: true,
-    requiresSigning:    false
+    requiresSigning:    false,
+    oauthVersion:       '1.0A'
   },
   partner: {
     url:                'https://api-partner.network.xero.com/api.xro/2.0',
@@ -18,7 +19,8 @@ export default {
     encryption_type:    'RSA-SHA1',
     signatureMethod:    'RSA-SHA1',
     requiresConnection: true,
-    requiresSigning:    true
+    requiresSigning:    true,
+    oauthVersion:       '1.0A'
   },
   private: {
     url:                'https://api.xero.com/api.xro/2.0',
@@ -26,6 +28,7 @@ export default {
     encryptionType:     'PLAINTEXT',
     signatureMethod:    'RSA-SHA1',
     requiresConnection: false,
-    requiresSigning:    true
+    requiresSigning:    true,
+    oauthVersion:       '1.0A'
   }
 };

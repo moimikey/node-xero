@@ -1,10 +1,13 @@
-import OAuth from 'oauth';
+import OAuth  from 'oauth'
+import Config from './config'
 
-export function connector(options) {
+function connector(options) {
+  // if options.public || options.private || options.partner
+  //   Config['public'].host
+
   return function decorator(target) {
-    target.connector = {
-      _types: options,
-      _oauth: new OAuth.OAuth(
+    Object.assign(target, {
+      oauth: new OAuth.OAuth(
         'https://api.twitter.com/oauth/request_token',
         'https://api.twitter.com/oauth/access_token',
         'your application consumer key',
@@ -13,6 +16,8 @@ export function connector(options) {
         null,
         'HMAC-SHA1'
       )
-    }
+    })
   }
-};
+}
+
+export default connector

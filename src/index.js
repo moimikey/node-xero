@@ -1,4 +1,6 @@
-import Auth from './auth';
+import API           from './api'
+import config        from './api/config'
+import arrayContains from './util'
 
 class Xero {
   constructor(options) {
@@ -8,16 +10,20 @@ class Xero {
       publicKey,
       consumerKey,
       consumerSecret
-    } = options || Object.create(null);
+    } = options || Object.create(null)
 
-    this.API = new Auth({
+    if (!arrayContains(Object.keys(config), type)) {
+      throw Error('A valid API type is required.')
+    }
+
+    return new API({
       type,
       privateKey,
       publicKey,
       consumerKey,
-      consumerSecret
-    }).connect();
+      consumerSecret,
+    }).connect()
   }
 }
 
-export default Xero;
+export default Xero
