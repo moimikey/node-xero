@@ -28,7 +28,7 @@
     "babel-plugin-object-assign": "1.2.1",
     "babelify": "7.2.0",
     "browserify": "12.0.1",
-    "chai": "3.4.0",
+    "chai": "3.4.1",
     "mocha": "2.3.3"
   },
   "dependencies": {
