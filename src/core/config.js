@@ -1,13 +1,8 @@
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
 /* eslint camelcase:0 */
-var apiConfig = exports.apiConfig = {
+export const apiConfig = {
   public: {
-    url: 'https://api.xero.com/api.xro/2.0',
-    payroll: 'https://api.xero.com/payroll.xro/1.0',
+    apiUrl: 'https://api.xero.com/api.xro/2.0',
+    payrollApiUrl: 'https://api.xero.com/payroll.xro/1.0',
     requestTokenUrl: 'https://api.xero.com/oauth/RequestToken',
     authorizeUrl: 'https://api.xero.com/oauth/Authorize',
     accessTokenUrl: 'https://api.xero.com/oauth/AccessToken',
@@ -17,8 +12,8 @@ var apiConfig = exports.apiConfig = {
     oauthVersion: '1.0A'
   },
   partner: {
-    url: 'https://api-partner.network.xero.com/api.xro/2.0',
-    payroll: 'https://api.xero.com/payroll.xro/1.0',
+    apiUrl: 'https://api-partner.network.xero.com/api.xro/2.0',
+    payrollApiUrl: 'https://api.xero.com/payroll.xro/1.0',
     requestTokenUrl: 'https://api-partner.network.xero.com/oauth/RequestToken',
     authorizeUrl: 'https://api.xero.com/oauth/Authorize',
     accessTokenUrl: 'https://api-partner.network.xero.com/oauth/AccessToken',
@@ -29,12 +24,12 @@ var apiConfig = exports.apiConfig = {
     oauthVersion: '1.0A'
   },
   private: {
-    url: 'https://api.xero.com/api.xro/2.0',
-    payroll: 'https://api.xero.com/payroll.xro/1.0',
+    apiUrl: 'https://api.xero.com/api.xro/2.0',
+    payrollApiUrl: 'https://api.xero.com/payroll.xro/1.0',
     encryptionType: 'PLAINTEXT',
     signatureMethod: 'RSA-SHA1',
     requiresConnection: false,
-    requiresSigning: true,
+    requiresSigning: false,
     oauthVersion: '1.0A'
   }
-};
+}

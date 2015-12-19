@@ -2,11 +2,11 @@ import {
   Accounting,
   Files,
   Payroll
-} from '../api';
+} from '../api'
 
 export class Auth {
   constructor(options) {
-    Object.assign(this, options);
+    Object.assign(this, options)
   }
 
   connect() {
