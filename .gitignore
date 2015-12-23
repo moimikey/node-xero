@@ -1,6 +1,7 @@
 .eslintcache
-.src/old
 .DS*
 *.log
+src/.old
 node_modules
 lib
+ssl
