@@ -37,7 +37,7 @@
     "faucet": "0.0.1",
     "tap-notify": "0.0.3",
     "tap-spec": "4.1.1",
-    "tape": "4.3.0"
+    "tape": "4.4.0"
   },
   "dependencies": {
     "hasdom": "0.0.4",
