@@ -12,10 +12,12 @@ tape.test('connection methods', t => {
       consumerKey: CONSUMER_KEY,
       consumerSecret: CONSUMER_SECRET
     })
-    xero.fetch('Accounts').then(resp => {
+    xero.fetch('Accounts')
+    .then(resp => {
       x.equal(typeof resp, 'object')
       x.end()
     })
+    .catch(err => new Error(err))
   })
   t.test('...private', x => {
     const xero = Xero({
@@ -23,10 +25,12 @@ tape.test('connection methods', t => {
       consumerKey: CONSUMER_KEY,
       consumerSecret: CONSUMER_SECRET_PEM
     })
-    xero.fetch('Accounts').then(resp => {
+    xero.fetch('Accounts')
+    .then(resp => {
       x.equal(typeof resp, 'object')
       x.end()
     })
+    .catch(err => new Error(err))
   })
   t.skip('...partner', x => {})
 })
@@ -44,6 +48,7 @@ tape.test('fetch', t => {
       x.equal(typeof resp, 'object')
       x.end()
     })
+    .catch(err => new Error(err))
   })
 
   t.test('...returns 69 entries', x => {
@@ -52,6 +57,7 @@ tape.test('fetch', t => {
       x.equal(resp.Accounts.length, 69)
       x.end()
     })
+    .catch(err => new Error(err))
   })
 
   // t.test('', x => {})
