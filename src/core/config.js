@@ -1,4 +1,3 @@
-/* eslint camelcase:0 */
 export const apiConfig = {
   public: {
     apiUrl: 'https://api.xero.com/api.xro/2.0',

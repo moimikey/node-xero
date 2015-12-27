@@ -2,7 +2,7 @@
   "name": "node-xero",
   "version": "1.0.0",
   "description": "node wrapper for Xero",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "babel-node test/index.js | tap-notify | faucet",
     "build": "babel -d lib/ src/",
@@ -35,13 +35,13 @@
     "babel-runtime": "6.3.19",
     "eslint": "1.10.3",
     "faucet": "0.0.1",
+    "native-or-bluebird": "1.2.0",
     "tap-notify": "0.0.3",
     "tap-spec": "4.1.1",
     "tape": "4.3.0"
   },
   "dependencies": {
     "hasdom": "0.0.4",
-    "mashape-oauth": "0.1.71",
-    "native-or-bluebird": "1.2.0"
+    "mashape-oauth": "0.1.71"
   }
 }
