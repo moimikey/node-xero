@@ -4,6 +4,7 @@
   "description": "node wrapper for Xero",
   "main": "lib/index.js",
   "scripts": {
+    "test-ci": "babel-node test/index.js",
     "test": "babel-node test/index.js | tap-notify | faucet",
     "build": "babel -d lib/ src/",
     "lint": "eslint --cache src/",
