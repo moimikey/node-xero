@@ -17,8 +17,12 @@ tape.test('connection methods', t => {
       x.equal(typeof resp, 'object')
       x.end()
     })
-    .catch(err => new Error(err))
+    .catch(err => {
+      Error(err)
+      x.end()
+    })
   })
+  t.skip('...partner', x => {})
   t.test('...private', x => {
     const xero = Xero({
       appType: 'private',
@@ -30,9 +34,11 @@ tape.test('connection methods', t => {
       x.equal(typeof resp, 'object')
       x.end()
     })
-    .catch(err => new Error(err))
+    .catch(err => {
+      Error(err)
+      x.end()
+    })
   })
-  t.skip('...partner', x => {})
 })
 
 tape.test('fetch', t => {
@@ -48,7 +54,10 @@ tape.test('fetch', t => {
       x.equal(typeof resp, 'object')
       x.end()
     })
-    .catch(err => new Error(err))
+    .catch(err => {
+      Error(err)
+      x.end()
+    })
   })
 
   t.test('...returns 69 entries', x => {
@@ -57,29 +66,9 @@ tape.test('fetch', t => {
       x.equal(resp.Accounts.length, 69)
       x.end()
     })
-    .catch(err => new Error(err))
+    .catch(err => {
+      Error(err)
+      x.end()
+    })
   })
-
-  // t.test('', x => {})
-  // t.test('', x => {})
-  // t.test('', x => {})
-  // t.test('', x => {})
-  // t.test('', x => {})
-  // t.test('', x => {})
-  // t.test('', x => {})
-  // t.test('', x => {})
-  // t.test('', x => {})
-  // t.test('', x => {})
 })
-
-// tape.test('api', t => {
-  // const xero = Xero(config)
-
-  // t.test('', x => {})
-  // t.test('', x => {})
-  // t.test('', x => {})
-  // t.test('', x => {})
-  // t.test('', x => {})
-  // t.test('', x => {})
-  // t.end()
-// })
