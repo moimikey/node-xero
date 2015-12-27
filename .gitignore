@@ -4,3 +4,4 @@
 src/.old
 node_modules
 ssl
+lib
