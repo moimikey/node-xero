@@ -117,6 +117,7 @@ export async function fetch(path) {
         })
       })
     })
+    .catch(err => new Error(err))
   }
 
   /**
