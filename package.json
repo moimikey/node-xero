@@ -37,7 +37,7 @@
     "eslint": "2.0.0",
     "faucet": "0.0.1",
     "native-or-bluebird": "1.2.0",
-    "tap-notify": "0.0.3",
+    "tap-notify": "1.0.0",
     "tap-spec": "4.1.1",
     "tape": "4.4.0"
   },
