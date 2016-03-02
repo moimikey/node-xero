@@ -16,7 +16,7 @@ export const apiConfig = {
     requestTokenUrl: 'https://api-partner.network.xero.com/oauth/RequestToken',
     authorizeUrl: 'https://api.xero.com/oauth/Authorize',
     accessTokenUrl: 'https://api-partner.network.xero.com/oauth/AccessToken',
-    encryption_type: 'RSA-SHA1',
+    encryptionType: 'RSA-SHA1',
     signatureMethod: 'RSA-SHA1',
     requiresConnection: true,
     requiresSigning: true,
