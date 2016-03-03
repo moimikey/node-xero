@@ -39,7 +39,7 @@
     "native-or-bluebird": "1.2.0",
     "tap-notify": "1.0.0",
     "tap-spec": "4.1.1",
-    "tape": "4.4.0"
+    "tape": "4.5.0"
   },
   "dependencies": {
     "hasdom": "0.0.4",
