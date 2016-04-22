@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/moimikey/node-xero",
   "devDependencies": {
-    "babel-cli": "6.7.5",
+    "babel-cli": "6.7.7",
     "babel-core": "6.7.7",
     "babel-eslint": "6.0.3",
     "babel-plugin-transform-object-assign": "6.5.0",
