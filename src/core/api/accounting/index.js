@@ -7,7 +7,7 @@ import { CRUD } from '../CRUD'
 class Accounting extends CRUD {
   constructor() {
     super()
-    console.log('Accounting!')
+    //console.log('Accounting!')
   }
 }
 export const accounting = Reflect.construct(Accounting)

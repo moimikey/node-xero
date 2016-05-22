@@ -1,3 +1,4 @@
+/* eslint no-console:0,no-unused-vars:0 */
 import url from 'url'
 import Promise from 'any-promise'
 import { readFileSync } from 'fs'
