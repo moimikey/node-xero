@@ -4,13 +4,17 @@
   "description": "node wrapper for Xero",
   "main": "lib/index.js",
   "scripts": {
-    "test-ci": "babel-node test/index.js",
-    "test": "babel-node test/index.js | tap-notify | faucet",
-    "build": "babel -d lib/ src/",
-    "lint": "eslint --cache src/",
-    "prepublish": "npm run lint && npm run build && npm run test",
-    "prepush": "prepush",
-    "precommit": "precommit"
+    "build": "babel --ignore *.spec.js -d lib src",
+    "clean": "rimraf .eslintcache {lib,build}/**/*.{js,log}",
+    "dedupe": "npm dedupe",
+    "lint": "eslint --cache src test",
+    "prebuild": "npm-run-all --sequential lint test clean",
+    "prepublish": "npm-run-all --sequential prune dedupe build",
+    "prune": "npm prune",
+    "shrink": "npm-run-all --sequential tidy && npm shrinkwrap",
+    "test": "babel-tap -Rspec src/**/*.spec.js",
+    "test:watch": "nodemon -w src --exec babel-tap -Rspec src/**/*.spec.js",
+    "tidy": "npm-run-all --sequential prune dedupe"
   },
   "repository": {
     "type": "git",
@@ -26,23 +30,36 @@
     "url": "https://github.com/moimikey/node-xero/issues"
   },
   "homepage": "https://github.com/moimikey/node-xero",
+  "browser": {
+    "fs": false
+  },
+  "peerDependencies": {
+
+  },
   "devDependencies": {
     "babel-cli": "6.9.0",
-    "babel-core": "6.7.7",
+    "babel-core": "6.9.0",
     "babel-eslint": "6.0.4",
-    "babel-plugin-transform-object-assign": "6.5.0",
+    "babel-plugin-transform-runtime": "6.9.0",
     "babel-preset-es2015": "6.9.0",
     "babel-preset-stage-0": "6.5.0",
-    "babel-runtime": "6.9.0",
-    "eslint": "2.8.0",
-    "faucet": "0.0.1",
-    "native-or-bluebird": "1.2.0",
-    "tap-notify": "1.0.0",
-    "tap-spec": "4.1.1",
-    "tape": "4.5.1"
+    "babel-tap": "5.0.0",
+    "eslint": "2.10.2",
+    "eslint-plugin-babel": "3.2.0",
+    "nodemon": "1.9.2",
+    "npm-run-all": "2.1.1",
+    "rimraf": "2.5.2",
+    "tap": "5.7.1"
   },
   "dependencies": {
+    "any-promise": "1.3.0",
+    "babel-runtime": "6.9.0",
     "hasdom": "0.0.4",
-    "mashape-oauth": "0.1.71"
+    "isomorphic-fetch": "2.2.1",
+    "lodash": "4.12.0",
+    "lru-memoize": "1.0.1",
+    "mashape-oauth": "0.1.71",
+    "read-glob-promise": "2.0.0",
+    "url": "0.11.0"
   }
 }

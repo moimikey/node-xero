@@ -2,7 +2,10 @@
 .editorconfig
 .eslintrc
 .eslintcache
-test/
+*.md
 bin/
 src/
 ssl/
+test/
+benchmark/
+.idea/

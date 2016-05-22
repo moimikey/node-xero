@@ -1,4 +1,5 @@
-import Promise from 'native-or-bluebird'
+import url from 'url'
+import Promise from 'any-promise'
 import { readFileSync } from 'fs'
 import { hasDOM } from 'hasdom'
 import { OAuth } from 'mashape-oauth'
@@ -10,11 +11,11 @@ import { CACHE,
          getTimestamp,
          lastInSet
 } from './cache'
-export async function fetch(path) {
+export async function fetch(path, type = 'get', qs = {}) {
   const {
-    appType = 'public',
+    appType = 'private',
     consumerKey,
-    consumerSecret,
+    consumerSecret
   } = this
 
   const {
@@ -23,7 +24,7 @@ export async function fetch(path) {
     accessTokenUrl,
     authorizeUrl,
     oauthVersion = '1.0A',
-    signatureMethod,
+    signatureMethod
   } = apiConfig[appType]
 
   /**
@@ -33,10 +34,10 @@ export async function fetch(path) {
   const oa = new OAuth({
     requestUrl: requestTokenUrl,
     accessUrl: accessTokenUrl,
-    consumerKey: consumerKey,
-    consumerSecret: hasDOM() ? consumerSecret
-                             : readFileSync(consumerSecret),
-    signatureMethod: signatureMethod,
+    consumerKey,
+    consumerSecret: hasDOM() || 'public' === appType ? consumerSecret
+                                                     : readFileSync(consumerSecret),
+    signatureMethod,
     version: oauthVersion,
     headers: {
       'Accept': 'application/json',
@@ -50,7 +51,7 @@ export async function fetch(path) {
    */
   const getRequestOptions = (...options) => {
     return Object.assign(Object.create(null), {
-      url: `${apiUrl}/${path}`
+      url: `${apiUrl}/${path}` + url.format({ query: qs })
     },
     ...options)
   }
@@ -59,14 +60,9 @@ export async function fetch(path) {
    * Returns a `requestToken` and `requestSecret`
    */
   const getRequestToken = () => {
-    return new Promise((resolve, reject) => {
-      return oa.getOAuthRequestToken((err, requestToken, requestSecret) => {
-        if (err) return reject(err)
-        return resolve({
-          requestToken,
-          requestSecret
-        })
-      })
+    console.error('getRequestToken')
+    return Promise.try(oa.getOAuthRequestToken).then((err, requestToken, requestSecret) => {
+      requestToken, requestSecret
     })
   }
 
@@ -78,6 +74,7 @@ export async function fetch(path) {
    * If `accessToken` is cached, but expired, fetch a new one!
    */
   const getAccessToken = () => {
+    console.error('getAccessToken')
     if (CACHE.size && getTimestamp() < lastInSet(MAXAGE)) return CACHE.get(lastInSet(AGE))
     return new Promise((resolve, reject) => {
       const CURRENT_TIME = getTimestamp()
@@ -94,6 +91,7 @@ export async function fetch(path) {
   }
 
   const getAuthorization = () => {
+    console.error('getAuthorization!')
     // todo
     // public
     return authorizeUrl
@@ -103,21 +101,25 @@ export async function fetch(path) {
    * `public` API request
    */
   const requestPublic = () => {
-    getRequestToken()
-    .then(getAuthorization)
-    .then(getAccessToken)
-    .then(accessToken => {
-      const requestOptions = getRequestOptions({
-        access_token: accessToken,
-      })
-      return new Promise((resolve, reject) => {
-        return oa.get(requestOptions, (err, resp) => {
-          if (err) return reject(err)
-          return resolve(JSON.parse(resp))
-        })
-      })
+    console.error('requestPublic')
+    return getRequestToken().then(function() {
+      console.log('yay')
+    }).catch(function(err) {
+      console.log('awww...', err)
     })
-    .catch(err => new Error(err))
+    // .then(getAuthorization)
+    // .then(getAccessToken)
+    // .then(accessToken => {
+    //   const requestOptions = getRequestOptions({
+    //     access_token: accessToken
+    //   })
+    //   return new Promise((resolve, reject) => {
+    //     return oa.get(requestOptions, (err, resp) => {
+    //       if (err) return reject(err)
+    //       return resolve(JSON.parse(resp))
+    //     })
+    //   })
+    // })
   }
 
   /**
@@ -128,7 +130,7 @@ export async function fetch(path) {
       oauth_token: consumerKey
     })
     return new Promise((resolve, reject) => {
-      return oa.get(requestOptions, (err, resp) => {
+      return oa[type](requestOptions, (err, resp) => {
         if (err) return reject(err)
         return resolve(JSON.parse(resp))
       })

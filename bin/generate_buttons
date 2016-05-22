@@ -1,0 +1,21 @@
+/* eslint no-console:0 */
+import readFiles from 'read-glob-promise'
+new (class GenerateButton {
+  constructor() {
+    this.run()
+  }
+  async run() {
+    const files = await readFiles('./fixtures/*.png')
+    const output = await files.reduce(async function(images, image, encoded) {
+      images = await images
+      image = await image
+      images.push({
+        key: 1,
+        val: encoded = image.toString('base64'),
+        len: encoded.length
+      })
+      return images
+    }, [])
+    console.log(output[0].val)
+  }
+})
