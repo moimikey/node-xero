@@ -1,5 +1,7 @@
 /* eslint no-unused-vars:0 */
 import * as tap from 'tap'
+import { default as Promise } from 'bluebird'
+import { typeov } from 'typeov'
 import { Xero } from '..'
 
 const TEST_ACCOUNT_ID = 'ceef66a5-a545-413b-9312-78a53caadbc4'
@@ -32,12 +34,19 @@ tap.test('Private API', x => {
     y.type(resp.Accounts, 'object', 'returns an object')
     y.equal(resp.Accounts.length, 1, 'with 1 entry')
     y.equal(resp.Accounts[0].AccountID, TEST_ACCOUNT_ID, 'of the given AccountID')
+    y.test('Account/<ID>', async z => {
+      try {
+        const ooba = await xero.fetch(`Accounts/${TEST_ACCOUNT_ID}`, 'delete')
+      } catch (err) {
+        console.log(err)
+      }
+    })
     y.end()
   })
 
   x.test('Contacts', async y => {
     const resp = await xero.fetch(`Contacts`)
-    y.type(resp.Contacts, 'object', 'returns an object')
+    y.equal(typeov(resp.Contacts), 'object', 'returns an object')
     y.equal(resp.Contacts.length, 48, 'with 48 entries')
     y.end()
   })
@@ -47,6 +56,14 @@ tap.test('Private API', x => {
   })
 
   x.test('Users', async y => {
+    y.end()
+  })
+
+  x.test('TaxRates', async y => {
+    const resp = await xero.fetch(`TaxRates`)
+    y.equal(typeov(resp.TaxRates), 'array', 'returns an array')
+    y.equal(resp.TaxRates.length, 7, 'with 7 entries')
+    y.equal(resp.TaxRates[0].TaxType, 'AVALARA', 'such as Avalara')
     y.end()
   })
 

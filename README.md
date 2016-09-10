@@ -4,8 +4,8 @@ An ES2015/JS SDK for Xero. Webpack, Browserify & Node.js friendly.
 # Features
 - Super lightweight
 - Browserify, Webpack & Node friendly
-- Support for multiple environments
-- Connectivity for all three API types
+- Support for multiple environments (node.js and browser)
+- Connectivity for all three API types (public, private, partner)
 - Promises/A+ (async/await! callback free!)
 - Simple API
 
@@ -20,14 +20,16 @@ A Xero app can be of **three** types:
 
 
 # Creating certs for Private applications
-> $ openssl genrsa -out privatekey.pem 1024
-
-> $ openssl req -new -x509 -key privatekey.pem -out publickey.cer -days 1825
-
-> $ openssl pkcs12 -export -out public_privatekey.pfx -inkey privatekey.pem -in publickey.cer
+```sh
+openssl genrsa -out privatekey.pem 1024
+openssl req -new -x509 -key privatekey.pem -out publickey.cer -days 1825
+openssl pkcs12 -export -out public_privatekey.pfx -inkey privatekey.pem -in publickey.cer
+```
 
 ## You can then confirm the validity of your private key
-> $ openssl rsa -text -in privatekey.pem
+```sh
+openssl rsa -text -in privatekey.pem
+```
 
 # Usage
 ## Create an instance
@@ -42,22 +44,8 @@ const xero = Xero(config)
 
 ## A-la-carte endpoint requests
 ```js
-const accts = xero.fetch('Accounts')
-.then(resp => {
-  console.log(resp)
-})
-.catch(resp => {
-  console.log(resp)
-})
-
 const orgs = await xero.fetch('Organisations')
-
-```
-
-## CRUD helper methods
-```js
-xero.api.accounting.create({...}) (PUT)
-xero.api.accounting.read({...})   (GET)
-xero.api.accounting.update({...}) (POST)
-xero.api.accounting.delete({...}) (DELETE)
+xero.fetch('Accounts').then(console.log).catch(console.error)
+xero.fetch('Accounts/85e4524f-5d17-4bb8-b616-7a11d9d077ab').then(console.log).catch(console.error)
+xero.fetch('Accounts/85e4524f-5d17-4bb8-b616-7a11d9d077ab', { method: 'DELETE' ).then(console.log).catch(console.error)
 ```
