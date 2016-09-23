@@ -1,6 +1,8 @@
 # node-xero
 An ES2015/JS SDK for Xero. Webpack, Browserify & Node.js friendly.
 
+**WARNING** THIS IS STILL A WORK IN PROGRESS AND MASTER MAY NOT BE FUNCTIONAL. PRs are always welcomed as I find free time to continue to work on this.
+
 # Features
 - Super lightweight
 - Browserify, Webpack & Node friendly
