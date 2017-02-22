@@ -45,7 +45,7 @@
     "eslint": "3.16.0",
     "eslint-plugin-babel": "4.0.1",
     "nodemon": "1.11.0",
-    "npm-run-all": "4.0.1",
+    "npm-run-all": "4.0.2",
     "rimraf": "2.6.0",
     "tap": "10.2.0",
     "typeov": "1.2.4"
