@@ -48,7 +48,7 @@
     "npm-run-all": "4.0.2",
     "rimraf": "2.6.1",
     "tap": "10.3.2",
-    "typeov": "1.2.4"
+    "typeov": "1.2.5"
   },
   "dependencies": {
     "any-promise": "1.3.0",
