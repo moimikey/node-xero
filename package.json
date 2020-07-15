@@ -57,7 +57,7 @@
     "bluebird": "3.5.0",
     "hasdom": "0.0.4",
     "isomorphic-fetch": "2.2.1",
-    "lodash": "4.17.4",
+    "lodash": "4.17.19",
     "lru-memoize": "1.0.2",
     "mashape-oauth": "0.1.71",
     "read-glob-promise": "2.0.0",
