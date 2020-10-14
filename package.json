@@ -44,7 +44,7 @@
     "babel-tap": "5.0.0",
     "eslint": "3.19.0",
     "eslint-plugin-babel": "4.1.0",
-    "nodemon": "1.11.0",
+    "nodemon": "2.0.5",
     "npm-run-all": "4.0.2",
     "rimraf": "2.6.1",
     "tap": "10.3.2",
